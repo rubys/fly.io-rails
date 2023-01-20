@@ -74,6 +74,17 @@ RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
     apt-get install --no-install-recommends -y ${BUILD_PACKAGES} \
     && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+<% if @sqlserver -%>
+# install freetds required by tiny_tds gem
+RUN wget ftp://ftp.freetds.org/pub/freetds/stable/freetds-patched.tar.gz && \
+		tar -xzf freetds-patched.tar.gz && \
+		cd freetds-patched && \
+		./configure --prefix=/usr/local --with-tdsver=7.3 && \
+		make && \
+		make install
+
+<% end -%>
+
 #######################################################################
 
 # install gems

@@ -28,6 +28,7 @@ For usage instructions, see the following guides:
   * _postgres_: if the production database is postgres a postgres machine will be allocated
   * _redis_: if redis is used for action cable, caching, or sidekiq your redis database will be added to this application.  If you don't currently have a redis database, one will be allocated.  If redis is used for caching, eviction will be turned on.
   * _sidekiq_: if sidekiq is used it will be launched along side of your rails application.
+  * _sqlserver_: if the production database is sqlserver freetds(required by tiny_tds gem) will be installed.
 
 ## Key files
 
